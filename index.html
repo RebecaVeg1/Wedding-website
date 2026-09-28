@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&amp;family=EB+Garamond:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
+<style>
+  html, body { margin:0; padding:0; background:#ffffff; }
+  body { font-family:'EB Garamond', Georgia, serif; color:#3a3a38; -webkit-font-smoothing:antialiased; }
+  * { box-sizing:border-box; }
+  a { color:#7d968f; text-decoration:none; }
+  a:hover { color:#5f7a73; text-decoration:underline; }
+  ::selection { background:#dfeae7; }
+  :focus-visible { outline:2px solid #b0c6c0; outline-offset:3px; }
+  @keyframes riseIn { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:none; } }
+  @media (max-width:820px) { .two-col { grid-template-columns:1fr !important; } }
+</style>
+<link rel="stylesheet" href="https://embed.typeform.com/next/css/widget.css">
+<script src="https://embed.typeform.com/next/embed.js"></script>
+</helmet>
+
+<div style="max-width:100%; overflow-x:hidden; background:#fff;">
+
+  <sc-if value="{{ locked }}" hint-placeholder-val="{{ true }}">
+    <div style="position:fixed; inset:0; z-index:1000; background:#fff; display:grid; place-items:center; padding:24px; overflow-y:auto;">
+      <div style="display:grid; gap:28px; justify-items:center; text-align:center; width:100%; max-width:380px;">
+        <div style="position:relative; width:min(360px,86vw); aspect-ratio:3/4;">
+          <img src="photos/wreath.png" alt="R&amp;M" style="position:absolute; inset:0; width:100%; height:100%; object-fit:contain; display:block;">
+          <div style="position:absolute; left:0; right:0; top:-8%; bottom:8%; display:grid; place-content:center; gap:10px; padding-top:14%; text-align:center;">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:clamp(22px,5.4vw,28px); font-weight:400; color:#4f6862; line-height:1.15;">Rebeca<span style="display:block; font-size:0.58em; line-height:1; margin-top:calc(-0.15em + 5px); letter-spacing:0.08em; color:#4f6862;">Vegara Martínez</span><span style="font-style:italic; font-size:0.72em;">&amp;</span><br>Miquel<span style="display:block; font-size:0.58em; line-height:1; margin-top:calc(-0.15em + 5px); letter-spacing:0.08em; color:#4f6862;">Llobet Sánchez</span></div>
+            <div style="position:relative; top:calc(min(360px,86vw) * 0.1333 - 15px); font-size:17px; letter-spacing:0.28em; color:#6f8a83; padding-left:0.28em;">19 · 12 · 2026</div>
+          </div>
+        </div>
+        <form onSubmit="{{ tryUnlock }}" style="width:100%; display:grid; gap:12px;">
+          <input type="password" value="{{ pw }}" onChange="{{ onPw }}" placeholder="Password" autocomplete="current-password" style="width:100%; box-sizing:border-box; min-height:50px; padding:12px 22px; border:1px solid #8aa39c; border-radius:999px; font-family:'EB Garamond',serif; font-size:20px; color:#33322f; text-align:left; outline:none; background:#f4f7f6; box-shadow:inset 0 1px 3px rgba(60,80,74,0.12); cursor:text;" style-focus="background:#fff; border-color:#6f8a83; box-shadow:0 0 0 3px #e3ece9;">
+          <button type="submit" style="min-height:48px; padding:12px 30px; border:1px solid #8aa39c; border-radius:999px; background:#8aa39c; color:#fff; font-family:'EB Garamond',serif; font-size:18px; letter-spacing:0.2em; text-transform:uppercase; cursor:pointer;" style-hover="background:#76928a; border-color:#76928a;">Enter</button>
+          <sc-if value="{{ pwError }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:19px; color:#8a4a44; line-height:1.5;">Contrasenya incorrecta · Contraseña incorrecta · Wrong password</div>
+          </sc-if>
+        </form>
+      </div>
+    </div>
+  </sc-if>
+
+  <div style="position:sticky; top:0; z-index:20; display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px clamp(18px,5vw,64px); background:rgba(255,255,255,0.92); backdrop-filter:blur(8px); border-bottom:1px solid #eceae6;">
+    <a href="#top" style="font-family:'Cormorant Garamond',serif; font-size:22px; letter-spacing:0.22em; color:#8aa39c; text-decoration:none;">R<span style="font-size:0.75em; font-style:italic; letter-spacing:0.29em;">&amp;</span>M</a>
+    <div style="display:flex; align-items:center; gap:6px;">
+      <button type="button" onClick="{{ setCa }}" style="{{ styleCa }}">CAT</button>
+      <span style="color:#cfcdc8; font-size:14px;">·</span>
+      <button type="button" onClick="{{ setEs }}" style="{{ styleEs }}">ESP</button>
+      <span style="color:#cfcdc8; font-size:14px;">·</span>
+      <button type="button" onClick="{{ setEn }}" style="{{ styleEn }}">ENG</button>
+    </div>
+  </div>
+
+  <nav style="display:flex; flex-wrap:wrap; justify-content:center; gap:clamp(14px,3vw,34px); padding:16px 20px 4px; margin-top:0.2rem; font-size:13px; letter-spacing:0.18em; text-transform:uppercase; font-family:'EB Garamond',serif;">
+    <a href="#story" style="color:#6f6d68;">{{ t.navStory }}</a>
+    <a href="#schedule" style="color:#6f6d68;">{{ t.navSchedule }}</a>
+    <a href="#venue" style="color:#6f6d68;">{{ t.navVenue }}</a>
+    <a href="#dress" style="color:#6f6d68;">{{ t.navDress }}</a>
+    <a href="#rsvp" style="color:#6f6d68;">{{ t.navRsvp }}</a>
+    <a href="#gifts" style="color:#6f6d68;">{{ t.navGifts }}</a>
+  </nav>
+
+  <section id="top" style="position:relative; display:grid; margin-top:14px;">
+    <div style="position:relative; width:100%; height:clamp(440px,72vh,780px); overflow:hidden;">
+      <img src="photos/kiss.jpg" alt="Rebeca &amp; Miquel" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:50% 38%;">
+      <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(28,30,28,0.34) 0%, rgba(28,30,28,0.30) 55%, rgba(28,30,28,0.46) 100%);"></div>
+      <div style="position:absolute; inset:0; display:grid; place-items:center; padding:24px;">
+        <div style="display:grid; gap:clamp(16px,2.4vw,26px); justify-items:center; text-align:center; animation:riseIn 900ms ease both;">
+          <h1 style="margin:0; font-family:'Cormorant Garamond',serif; font-weight:300; font-size:clamp(38px,7.6vw,96px); line-height:1.04; letter-spacing:0.02em; color:#fff; text-shadow:0 1px 24px rgba(0,0,0,0.25);">Rebeca<span style="font-style:italic; font-size:0.62em; padding:0 0.32em;">&amp;</span>Miquel</h1>
+          <div style="width:64px; height:1px; background:rgba(255,255,255,0.7);"></div>
+          <div style="font-size:clamp(18px,1.6vw,22px); letter-spacing:0.3em; text-transform:uppercase; color:#fff;">19 · 12 · 2026</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:clamp(20px,5vw,56px); padding:clamp(30px,4vw,52px) 20px clamp(10px,2vw,20px);">
+      <div style="text-align:center; min-width:64px;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:clamp(28px,4vw,42px); color:#33322f; line-height:1;">{{ cd.d }}</div>
+        <div style="font-size:16px; letter-spacing:0.24em; text-transform:uppercase; color:#9a988f; margin-top:6px;">{{ t.days }}</div>
+      </div>
+      <div style="text-align:center; min-width:64px;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:clamp(28px,4vw,42px); color:#33322f; line-height:1;">{{ cd.h }}</div>
+        <div style="font-size:16px; letter-spacing:0.24em; text-transform:uppercase; color:#9a988f; margin-top:6px;">{{ t.hours }}</div>
+      </div>
+      <div style="text-align:center; min-width:64px;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:clamp(28px,4vw,42px); color:#33322f; line-height:1;">{{ cd.m }}</div>
+        <div style="font-size:16px; letter-spacing:0.24em; text-transform:uppercase; color:#9a988f; margin-top:6px;">{{ t.minutes }}</div>
+      </div>
+    </div>
+    <div style="text-align:center; padding:0 20px clamp(30px,4vw,54px); font-size:clamp(18px,1.5vw,20px); letter-spacing:0.2em; color:#8f8d87;">{{ t.heroPlace }}</div>
+  </section>
+
+  <section id="story" style="padding:clamp(48px,7vw,104px) clamp(20px,6vw,80px); border-top:1px solid #f0eeea;">
+    <div class="two-col" style="max-width:1120px; margin:0 auto; display:grid; grid-template-columns:0.85fr 1.15fr; gap:clamp(28px,5vw,64px); align-items:center;">
+      <img src="photos/portrait.jpg" alt="Rebeca &amp; Miquel" style="width:100%; height:clamp(360px,52vw,620px); object-fit:cover; object-position:50% 30%; filter:saturate(0.88) contrast(0.96);">
+      <div style="display:grid; gap:20px;">
+        
+        <h2 style="margin:0; font-family:'Cormorant Garamond',serif; font-weight:400; font-size:clamp(28px,3.6vw,44px); line-height:1.15; color:#33322f;">{{ t.storyTitle }}</h2>
+        <p style="margin:0; font-size:clamp(19px,1.5vw,22px); line-height:1.75; color:#54524d; text-wrap:pretty; max-width:56ch;">{{ t.storyP1 }}</p>
+        <p style="margin:0; font-size:clamp(19px,1.5vw,22px); line-height:1.75; color:#54524d; text-wrap:pretty; max-width:56ch;">{{ t.storyP2 }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="width:100%; margin:0; padding:0;">
+    <img src="photos/dog.jpg" alt="" style="display:block; width:100%; height:clamp(280px,46vw,620px); object-fit:cover; object-position:58% 55%;">
+  </section>
+
+  <section id="schedule" style="padding:clamp(48px,7vw,104px) clamp(20px,6vw,80px); background:#fbfcfb; border-top:1px solid #f0eeea; border-bottom:1px solid #f0eeea;">
+    <div style="max-width:820px; margin:0 auto; display:grid; gap:clamp(28px,4vw,48px); justify-items:center; text-align:center;">
+      <div style="display:grid; gap:14px; justify-items:center;">
+        
+        <h2 style="margin:0; font-family:'Cormorant Garamond',serif; font-weight:400; font-size:clamp(28px,3.6vw,44px); color:#33322f;">{{ t.scheduleTitle }}</h2>
+        <div style="font-size:20px; letter-spacing:0.14em; color:#8f8d87;">{{ t.scheduleDate }}</div>
+      </div>
+      <div style="width:100%; display:grid; gap:0; border-top:1px solid #e6ebe9;">
+        <sc-for list="{{ schedule }}" as="row" hint-placeholder-count="6">
+          <div style="display:grid; grid-template-columns:110px 1fr; gap:clamp(12px,3vw,28px); align-items:baseline; padding:18px 4px; border-bottom:1px solid #e6ebe9; text-align:left;">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:clamp(22px,2.4vw,30px); color:#8aa39c; letter-spacing:0.04em;">{{ row.time }}</div>
+            <div style="font-size:clamp(19px,1.5vw,22px); color:#4a4844; letter-spacing:0.02em;">{{ row.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="venue" style="padding:clamp(48px,7vw,104px) clamp(20px,6vw,80px);">
+    <div class="two-col" style="max-width:1120px; margin:0 auto; display:grid; grid-template-columns:1.1fr 0.9fr; gap:clamp(28px,5vw,64px); align-items:center;">
+      <div style="display:grid; gap:20px;">
+        
+        <h2 style="margin:0; font-family:'Cormorant Garamond',serif; font-weight:400; font-size:clamp(28px,3.6vw,44px); line-height:1.15; color:#33322f;">Castell de Peralada</h2>
+        
+        <p style="margin:0; font-size:clamp(19px,1.5vw,22px); line-height:1.75; color:#54524d; text-wrap:pretty; max-width:52ch;">{{ t.venueP2 }}</p>
+        <a href="https://www.google.com/maps/place/Castell+de+Peralada/@42.3077297,3.0084097,17z/data=!3m1!4b1!4m6!3m5!1s0x12ba8ed106089a23:0xeeddc20df0b9a931!8m2!3d42.3077258!4d3.0109846!16s%2Fm%2F0bs0781" target="_blank" rel="noopener" style="justify-self:start; display:inline-block; padding:13px 30px; border:1px solid #b0c6c0; border-radius:999px; font-size:18px; letter-spacing:0.2em; text-transform:uppercase; color:#5f7a73; text-decoration:none;" style-hover="background:#eef4f2; color:#4c645e;">{{ t.venueCta }}</a>
+      </div>
+      <img src="photos/bridge.jpg" alt="" style="width:100%; height:clamp(300px,42vw,520px); object-fit:cover; filter:saturate(0.88) contrast(0.96);">
+    </div>
+  </section>
+
+  <section id="dress" style="padding:clamp(48px,7vw,104px) clamp(20px,6vw,80px); background:#fbfcfb; border-top:1px solid #f0eeea; border-bottom:1px solid #f0eeea;">
+    <div style="max-width:760px; margin:0 auto; display:grid; gap:20px; justify-items:center; text-align:center;">
+      <div style="font-size:17px; letter-spacing:0.3em; text-transform:uppercase; color:#8aa39c;">{{ t.navDress }}</div>
+      <h2 style="margin:0; font-family:'Cormorant Garamond',serif; font-weight:400; font-size:clamp(28px,3.6vw,44px); color:#33322f;">{{ t.dressTitle }}</h2>
+      <p style="margin:0; font-size:clamp(19px,1.5vw,22px); line-height:1.8; color:#54524d; text-wrap:pretty;">{{ t.dressP1 }}</p>
+      <p style="margin: 0; font-size:clamp(19px,1.5vw,22px); line-height: 1.8; color: #54524D; font-style: normal; text-wrap: pretty">{{ t.dressP2 }}</p>
+      <div style="width:100%; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:clamp(6px,1.5vw,14px); margin-top:10px;">
+        <img src="photos/dress-1.jpg" alt="" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;">
+        <img src="photos/dress-2b.jpg" alt="" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;">
+        <img src="photos/dress-3.jpg" alt="" style="width:100%; aspect-ratio:3/4; object-fit:cover; display:block;">
+      </div>
+      <p style="margin:0; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(20px,1.8vw,24px); color:#6f6d68; text-wrap:pretty;">{{ t.dressCaption }}</p>
+    </div>
+  </section>
+
+  <section id="rsvp" style="padding:clamp(48px,7vw,104px) clamp(20px,6vw,80px);">
+    <div style="max-width:900px; margin:0 auto; display:grid; gap:26px; justify-items:center; text-align:center;">
+      
+      <h2 style="margin:0; font-family:'Cormorant Garamond',serif; font-weight:400; font-size:clamp(28px,3.6vw,44px); color:#33322f;">{{ t.rsvpTitle }}</h2>
+      <p style="margin:0; font-size:clamp(19px,1.5vw,22px); line-height:1.75; color:#54524d; max-width:52ch; text-wrap:pretty;">{{ t.rsvpP }}</p>
+      <div style="width:100%; height:clamp(560px,80vh,720px); border:1px solid #d8e3e0; border-radius:20px; overflow:hidden; background:#fbfcfb;">
+        <div ref="{{ tfRefCa }}" style="{{ tfStyleCa }}"></div>
+        <div ref="{{ tfRefEs }}" style="{{ tfStyleEs }}"></div>
+        <div ref="{{ tfRefEn }}" style="{{ tfStyleEn }}"></div>
+      </div>
+      <a href="{{ rsvpUrl }}" target="_blank" rel="noopener" style="font-size:19px; letter-spacing:0.08em; color:#6f8a83; text-decoration:underline; text-underline-offset:4px;">{{ t.rsvpOpen }}</a>
+    </div>
+  </section>
+
+  <section id="gifts" style="padding:clamp(48px,7vw,104px) clamp(20px,6vw,80px); background:#fbfcfb; border-top:1px solid #f0eeea;">
+    <div class="two-col" style="max-width:1120px; margin:0 auto; display:grid; grid-template-columns:0.9fr 1.1fr; gap:clamp(28px,5vw,64px); align-items:center;">
+      <img src="photos/rings.jpg" alt="" style="width:100%; height:clamp(340px,48vw,580px); object-fit:cover; object-position:50% 45%; filter:saturate(0.88) contrast(0.96);">
+      <div style="display:grid; gap:20px;">
+        
+        <h2 style="margin:0; font-family:'Cormorant Garamond',serif; font-weight:400; font-size:clamp(28px,3.6vw,44px); line-height:1.15; color:#33322f;">{{ t.giftsTitle }}</h2>
+        <p style="margin:0; font-size:clamp(19px,1.5vw,22px); line-height:1.8; color:#54524d; text-wrap:pretty; max-width:52ch;">{{ t.giftsP }}</p>
+        <div style="margin-top:6px; padding:22px 30px; border:1px solid #e2e9e7; border-radius:16px; background:#fff; display:grid; gap:8px; justify-self:start; min-width:min(420px,100%);">
+          <div style="font-size:16px; letter-spacing:0.26em; text-transform:uppercase; color:#9a988f;">{{ t.giftsIbanLabel }}</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:22px; letter-spacing:0.08em; color:#8aa39c; overflow-wrap:anywhere;">ES30 1583 0001 1191 0471 2238</div>
+          <div style="margin-top:10px; font-size:16px; letter-spacing:0.26em; text-transform:uppercase; color:#9a988f;">{{ t.giftsHolderLabel }}</div>
+          <div style="font-family:'Cormorant Garamond',serif; font-size:22px; color:#54524d;">Miquel Llobet o Rebeca Vegara</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="padding:clamp(44px,6vw,80px) clamp(20px,6vw,80px) clamp(52px,6vw,90px); background:#fff; border-top:1px solid #f0eeea; display:grid; gap:16px; justify-items:center; text-align:center;">
+    <div style="font-family:'Cormorant Garamond',serif; font-size:26px; letter-spacing:0.24em; color:#8aa39c;">R<span style="font-size:0.75em; font-style:italic; letter-spacing:0.32em;">&amp;</span>M</div>
+    
+    
+    <div style="font-size:18px; letter-spacing:0.2em; text-transform:uppercase; color:#b5b3ac; margin-top:10px;">19 · 12 · 2026 — Peralada</div>
+  </footer>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{}">
+const I18N = {
+  ca: {
+    navStory: "Nosaltres", navSchedule: "El dia", navVenue: "El lloc", navDress: "Codi de vestimenta", navRsvp: "Confirmació", navGifts: "Regals",
+    heroPlace: "Castell de Peralada · Girona",
+    days: "dies", hours: "hores", minutes: "minuts",
+    storyTitle: "Dos començaments a la vegada",
+    storyP1: "Des que ens vam conèixer fa quatre anys hem construït una vida a Barcelona, i aquesta tardor ho posem tot en caixes per començar de nou a San Francisco. Així que el desembre són, de fet, dos començaments alhora: el nostre matrimoni i la nostra vida a Amèrica.",
+    storyP2: "No ens imaginem celebrar-ho enlloc més que a Peralada, amb tots vosaltres. Tothom d'aquesta llista ens ha ajudat a arribar fins aquí, i tenim moltes ganes de celebrar amb vosaltres aquest nadal.",
+    scheduleTitle: "Dissabte 19 de desembre", scheduleDate: "Castell de Peralada",
+    s1: "Arribada ", s2: "Cerimònia", s3: "Aperitiu", s4: "Dinar", s5: "Barra lliure", s6: "Comiat dels nuvis",
+    venueP1: "La cerimònia, l'aperitiu, el dinar i la festa són tots al Castell de Peralada. No cal moure's en tot el dia.",
+    venueP2: "Hi ha aparcament dins del recinte del castell. Si necessites ajuda per organitzar el transport, escriu-nos i t'ajudem a trobar la millor manera d'arribar-hi.",
+    venueCta: "Veure al mapa",
+    dressTitle: "Formal i nadalenc",
+    dressP1: "Us convidem a vestir amb vestits foscos, vestits de còctel o llargs i a abraçar els colors clàssics del Nadal: verds, vermells, blau fosc... Per sobre de tot, volem que estigueu còmodes i gaudiu del dia. Poseu-vos el que us faci sentir millor!",
+    dressP2: "", dressCaption: "Alguns colors de Nadal dels quals us podeu inspirar",
+    rsvpTitle: "Ens hi acompanyes?", rsvpP: "Si us plau, confirma la teva assistència abans del 10 de Novembre de 2026.",
+    rsvpSlot: "aquí anirà el formulari de confirmació", rsvpOpen: "Obre el formulari en una pestanya nova", rsvpUrl: "https://m4ek1frgrjf.typeform.com/to/z5cqmDuW",
+    giftsTitle: "El millor regal ets tu",
+    giftsP: "El millor regal és que celebreu amb nosaltres. Com que no ens podem emportar els regals físics, si ens voleu fer un detall, us agrairem que contribuïu al nostre viatge de noces a Nova Zelanda o a la nostra nova vida a San Francisco. Moltes gràcies!",
+    giftsIbanLabel: "Número de compte", giftsHolderLabel: "Titular",
+    footerContact: "Qualsevol dubte, escriu a la Rebeca:"
+  },
+  es: {
+    navStory: "Nosotros", navSchedule: "El día", navVenue: "El lugar", navDress: "Código de vestimenta", navRsvp: "Confirmación", navGifts: "Regalos",
+    heroPlace: "Castell de Peralada · Girona",
+    days: "días", hours: "horas", minutes: "minutos",
+    storyTitle: "Dos comienzos a la vez",
+    storyP1: "Desde que nos conocimos hace cuatro años hemos construido una vida en Barcelona, y este otoño lo metemos todo en cajas para empezar de nuevo en San Francisco. Así que diciembre son, en realidad, dos comienzos a la vez: nuestro matrimonio y nuestra vida en América.",
+    storyP2: "No nos imaginamos celebrarlo en otro lugar que Peralada, con vosotros. Todos los que estáis en esta lista habéis tenido algo que ver con que estemos aquí, y tenemos muchas ganas de celebrar juntos esta navidad.",
+    scheduleTitle: "Sábado 19 de diciembre", scheduleDate: "Castell de Peralada",
+    s1: "Llegada ", s2: "Ceremonia", s3: "Aperitivo", s4: "Comida", s5: "Barra libre", s6: "Despedida de los novios",
+    venueP1: "La ceremonia, el aperitivo, la comida y la fiesta son todos en el Castell de Peralada. No hay que moverse en todo el día.",
+    venueP2: "Hay aparcamiento dentro del recinto del castillo. Si necesitas ayuda para organizar el transporte o el alojamiento escríbenos y te ayudamos a encontrar la mejor manera de llegar.",
+    venueCta: "Ver en el mapa",
+    dressTitle: "Formal, con aire navideño",
+    dressP1: "Os invitamos a vestir con trajes oscuros, vestidos de cóctel o largos y a abrazar los colores clásicos de Navidad: verdes, rojos, azul marino...",
+    dressCaption: "Algunos colores navideños en los que podéis inspiraros",
+    dressP2: "Por encima de todo, queremos que estéis cómodos y disfrutéis del día. ¡Poneos lo que os haga sentir mejor!",
+    rsvpTitle: "¿Nos acompañas?", rsvpP: "Por favor, confirma tu asistencia antes del 10 de Noviembre de 2026.",
+    rsvpSlot: "aquí irá el formulario de confirmación", rsvpOpen: "Abre el formulario en una pestaña nueva", rsvpUrl: "https://m4ek1frgrjf.typeform.com/to/A0DK5DyV",
+    giftsTitle: "El mejor regalo es estar juntos",
+    giftsP: "El mejor regalo es que celebréis con nosotros. Como no nos podemos llevar los regalos físicos, si nos queréis hacer un detalle, os agradeceremos que contribuyáis a nuestro viaje de novios a Nueva Zelanda o a nuestra nueva vida en San Francisco. ¡Muchas gracias!",
+    giftsIbanLabel: "Número de cuenta", giftsHolderLabel: "Titular",
+    footerContact: "Cualquier duda, escribe a Rebeca:"
+  },
+  en: {
+    navStory: "Us", navSchedule: "The day", navVenue: "The venue", navDress: "Dress code", navRsvp: "RSVP", navGifts: "Gifts",
+    heroPlace: "Castell de Peralada · Girona",
+    days: "days", hours: "hours", minutes: "minutes",
+    storyTitle: "Two beginnings at once",
+    storyP1: "Since we met four years ago we've built a life in Barcelona, and this autumn we're packing everything into boxes and starting again in San Francisco. So December is really two beginnings at once: our marriage and our life in America.",
+    storyP2: "We can't imagine marking this new beginning anywhere but Peralada, with all of you. Everyone on this guest list has had a hand in getting us here, and we can't wait to celebrate with you this Christmas.",
+    scheduleTitle: "Saturday 19 December", scheduleDate: "Castell de Peralada",
+    s1: "Arrival", s2: "Ceremony", s3: "Cocktail hour", s4: "Meal", s5: "Open bar ", s6: "Couple send-off",
+    venueP1: "Ceremony, cocktail, meal and party all happen at Castell de Peralada. Once you arrive, there's nowhere else to be.",
+    venueP2: "There is parking available in the castle grounds. If you need help arranging transportation, write to us and we'll help you figure out the best way to get there.",
+    venueCta: "Open in maps",
+    dressTitle: "Formal, with a holiday feel",
+    dressP1: "Our wedding in Girona will be a celebration with a warm, traditional holiday feel. We invite guests to wear formal attire — think dark suits, cocktail or long dresses — while embracing classic Christmas colours like greens, reds and navy.",
+    dressCaption: "Some Christmas colours you can take inspiration from",
+    dressP2: "Above all, we want you to feel comfortable and enjoy the day. Feel free to wear whatever makes you feel best!",
+    rsvpTitle: "Will you join us?", rsvpP: "Please let us know by 10 November 2026.",
+    rsvpSlot: "the RSVP form goes here", rsvpOpen: "Open the form in a new tab", rsvpUrl: "https://m4ek1frgrjf.typeform.com/to/vcEJZicv",
+    giftsTitle: "The best gift is you",
+    giftsP: "The best gift is having you celebrate with us. Since we can't take physical gifts with us, if you'd like to give us something, we'd be grateful for a contribution towards our honeymoon in New Zealand or our new life in San Francisco. Thank you so much!",
+    giftsIbanLabel: "Account number", giftsHolderLabel: "Account holder",
+    footerContact: "Any questions, write to Rebeca:"
+  }
+};
+
+const TARGET = new Date("2026-12-19T13:00:00+01:00").getTime();
+
+class Component extends DCLogic {
+  state = { lang: "ca", now: Date.now(), unlocked: false, pw: "", pwError: false };
+  tfRefs = { ca: React.createRef(), es: React.createRef(), en: React.createRef() };
+  tfDone = {};
+  mountTf() {
+    const lang = this.state.lang, el = this.tfRefs[lang] && this.tfRefs[lang].current;
+    if (!el || this.tfDone[lang]) return;
+    if (!window.tf || !window.tf.createWidget) { clearTimeout(this._tfT); this._tfT = setTimeout(() => this.mountTf(), 300); return; }
+    this.tfDone[lang] = true;
+    const id = { ca: "z5cqmDuW", es: "A0DK5DyV", en: "vcEJZicv" }[lang];
+    window.tf.createWidget(id, { container: el, inlineOnMobile: true, height: "100%", width: "100%", hideHeaders: true });
+    const fix = () => el.querySelectorAll('div, iframe').forEach(n => { n.style.width = '100%'; n.style.height = '100%'; n.style.border = '0'; n.style.opacity = '1'; });
+    fix(); setTimeout(fix, 500); setTimeout(fix, 1500);
+  }
+  componentDidUpdate() { this.mountTf(); }
+
+  componentDidMount() {
+    setTimeout(() => this.mountTf(), 0);
+    try { if (localStorage.getItem("rm-wedding-unlocked") === "1") this.setState({ unlocked: true }); } catch (e) {}
+    try {
+      const saved = localStorage.getItem("rm-wedding-lang");
+      if (saved && I18N[saved]) this.setState({ lang: saved });
+    } catch (e) {}
+    this._t = setInterval(() => this.setState({ now: Date.now() }), 1000);
+  }
+  componentWillUnmount() { clearInterval(this._t); }
+
+  pick(lang) {
+    try { localStorage.setItem("rm-wedding-lang", lang); } catch (e) {}
+    this.setState({ lang });
+  }
+
+  langStyle(on) {
+    return "padding:6px 12px; min-height:32px; border-radius:999px; font-family:'EB Garamond',serif; font-size:14px; letter-spacing:0.18em; cursor:pointer; transition:background 160ms, color 160ms;"
+      + (on
+        ? "background:#8aa39c; color:#fff; border:1px solid #8aa39c;"
+        : "background:transparent; color:#7a7873; border:1px solid #e4e2dd;");
+  }
+
+  renderVals() {
+    const lang = I18N[this.state.lang] ? this.state.lang : "ca";
+    const t = I18N[lang];
+    const diff = Math.max(0, TARGET - this.state.now);
+    const cd = {
+      d: Math.floor(diff / 86400000),
+      h: Math.floor(diff / 3600000) % 24,
+      m: Math.floor(diff / 60000) % 60
+    };
+    const schedule = [
+      { time: "12:30", label: t.s1 },
+      { time: "13:00", label: t.s2 },
+      { time: "14:00", label: t.s3 },
+      { time: "16:00", label: t.s4 },
+      { time: "18:00", label: t.s5 },
+      { time: "20:00", label: t.s6 }
+    ];
+    document.body.style.overflow = this.state.unlocked ? "" : "hidden";
+    return {
+      locked: !this.state.unlocked, pw: this.state.pw, pwError: this.state.pwError,
+      onPw: (e) => this.setState({ pw: e.target.value, pwError: false }),
+      tryUnlock: (e) => {
+        e.preventDefault();
+        if (this.state.pw.trim().toLowerCase() === "peralada2026") {
+          try { localStorage.setItem("rm-wedding-unlocked", "1"); } catch (err) {}
+          this.setState({ unlocked: true, pwError: false });
+        } else this.setState({ pwError: true });
+      },
+      t, cd, schedule, rsvpUrl: t.rsvpUrl, tfRefCa: this.tfRefs.ca, tfRefEs: this.tfRefs.es, tfRefEn: this.tfRefs.en,
+      tfStyleCa: { width: "100%", height: "100%", display: lang === "ca" ? "block" : "none" },
+      tfStyleEs: { width: "100%", height: "100%", display: lang === "es" ? "block" : "none" },
+      tfStyleEn: { width: "100%", height: "100%", display: lang === "en" ? "block" : "none" },
+      setCa: () => this.pick("ca"), setEs: () => this.pick("es"), setEn: () => this.pick("en"),
+      styleCa: this.langStyle(lang === "ca"),
+      styleEs: this.langStyle(lang === "es"),
+      styleEn: this.langStyle(lang === "en")
+    };
+  }
+}
+
+</script>
+</body>
+</html>
