@@ -29,7 +29,7 @@
 
 <div style="max-width:100%; overflow-x:hidden; background:#fff;">
 
-  <sc-if value="{{ locked }}" hint-placeholder-val="{{ true }}">
+  <sc-if value="{{ locked }}" hint-placeholder-val="{{ false }}">
     <div style="position:fixed; inset:0; z-index:1000; background:#fff; display:grid; place-items:center; padding:24px; overflow-y:auto;">
       <div style="display:grid; gap:28px; justify-items:center; text-align:center; width:100%; max-width:380px;">
         <div style="position:relative; width:min(360px,86vw); aspect-ratio:3/4;">
@@ -332,9 +332,9 @@ class Component extends DCLogic {
       { time: "18:00", label: t.s5 },
       { time: "20:00", label: t.s6 }
     ];
-    document.body.style.overflow = this.state.unlocked ? "" : "hidden";
+    document.body.style.overflow = "";
     return {
-      locked: !this.state.unlocked, pw: this.state.pw, pwError: this.state.pwError,
+      locked: false, pw: this.state.pw, pwError: this.state.pwError,
       onPw: (e) => this.setState({ pw: e.target.value, pwError: false }),
       tryUnlock: (e) => {
         e.preventDefault();
